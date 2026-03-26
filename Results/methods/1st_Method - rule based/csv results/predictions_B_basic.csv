@@ -1,0 +1,456 @@
+ID,Requirement,Requirement_Changed,PlantUML,Label,Error_Type,Image_Path,Dataset,Prediction
+dataset_B_SYNONYM_0001,"In the banking module, the system shall generate monthly account statements.","In the finance module, the application shall generate monthly account summaries.","@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity MODULE {
+  ModuleId <<key>>
+}
+
+entity ACCOUNT_SUMMARY {
+  AccountSummaryId <<key>>
+}
+
+relationship GENERATE_ACCOUNT_SUMMARIES {
+}
+
+relationship CONTAIN_MODULE {
+}
+
+CONTAIN_MODULE =1= APPLICATION
+CONTAIN_MODULE -N- MODULE
+
+GENERATE_ACCOUNT_SUMMARIES =1= MODULE
+GENERATE_ACCOUNT_SUMMARIES -N- ACCOUNT_SUMMARY
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0001.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0002,The system shall allow users to view their account balance and transaction history.,The system shall allow customers to view their account balance and activity history.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity CUSTOMER {
+  CustomerId <<key>>
+}
+
+entity ACCOUNT_BALANCE {
+  AccountBalanceId <<key>>
+}
+
+entity ACTIVITY_HISTORY {
+  ActivityHistoryId <<key>>
+}
+
+relationship VIEW_ACCOUNT_BALANCE {
+}
+
+relationship VIEW_ACTIVITY_HISTORY {
+}
+
+VIEW_ACCOUNT_BALANCE =1= SYSTEM
+VIEW_ACCOUNT_BALANCE -N- CUSTOMER
+VIEW_ACCOUNT_BALANCE -N- ACCOUNT_BALANCE
+
+VIEW_ACTIVITY_HISTORY =1= SYSTEM
+VIEW_ACTIVITY_HISTORY -N- CUSTOMER
+VIEW_ACTIVITY_HISTORY -N- ACTIVITY_HISTORY
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0002.png,dataset_B_SYNONYM,MATCH
+dataset_B_SYNONYM_0003,"In the e-commerce module, the system shall generate an order confirmation email after each purchase.","In the online retail module, the system shall generate a purchase confirmation notification after each transaction.","@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity PURCHASE_CONFIRMATION_NOTIFICATION {
+  PurchaseConfirmationNotificationId <<key>>
+}
+
+entity TRANSACTION {
+  TransactionId <<key>>
+}
+
+relationship GENERATE {
+}
+
+GENERATE =1= SYSTEM
+GENERATE -N- PURCHASE_CONFIRMATION_NOTIFICATION
+GENERATE -N- TRANSACTION
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0003.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0004,"In the hospital module, the system shall generate discharge summaries for patients.","In the medical center module, the system shall generate discharge reports for clients.","@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity DISCHARGE_REPORT {
+  DischargeReportId <<key>>
+}
+
+entity CLIENT {
+  ClientId <<key>>
+}
+
+relationship GENERATE_DISCHARGE_REPORT {
+}
+
+GENERATE_DISCHARGE_REPORT =1= SYSTEM
+GENERATE_DISCHARGE_REPORT -N- DISCHARGE_REPORT
+GENERATE_DISCHARGE_REPORT -N- CLIENT
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0004.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0005,Doctors must be able to view and update patient prescriptions.,Physicians must be able to view and revise client prescriptions.,"@startchen
+entity PHYSICIAN {
+  PhysicianId <<key>>
+}
+
+entity CLIENT {
+  ClientId <<key>>
+}
+
+entity PRESCRIPTION {
+  PrescriptionId <<key>>
+}
+
+relationship VIEW_PRESCRIPTION {
+}
+
+relationship REVISE_PRESCRIPTION {
+}
+
+VIEW_PRESCRIPTION =1= PHYSICIAN
+VIEW_PRESCRIPTION -N- PRESCRIPTION
+VIEW_PRESCRIPTION -1- CLIENT
+
+REVISE_PRESCRIPTION =1= PHYSICIAN
+REVISE_PRESCRIPTION -N- PRESCRIPTION
+REVISE_PRESCRIPTION -1- CLIENT
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0005.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0006,Teachers must be able to assign homework and upload study materials.,Instructors must be able to allocate assignments and upload learning resources.,"@startchen
+entity INSTRUCTOR {
+  InstructorId <<key>>
+}
+
+entity ASSIGNMENT {
+  AssignmentId <<key>>
+}
+
+entity LEARNING_RESOURCE {
+  LearningResourceId <<key>>
+}
+
+relationship ALLOCATE_ASSIGNMENT {
+}
+
+relationship UPLOAD_LEARNING_RESOURCE {
+}
+
+ALLOCATE_ASSIGNMENT =1= INSTRUCTOR
+ALLOCATE_ASSIGNMENT -N- ASSIGNMENT
+
+UPLOAD_LEARNING_RESOURCE =1= INSTRUCTOR
+UPLOAD_LEARNING_RESOURCE -N- LEARNING_RESOURCE
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0006.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0007,The system should notify users of overdue books.,The application should alert patrons of delinquent volumes.,"@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity PATRON {
+  PatronId <<key>>
+}
+
+entity VOLUME {
+  VolumeId <<key>>
+  Status
+}
+
+relationship ALERT_DELINQUENT_VOLUME {
+}
+
+ALERT_DELINQUENT_VOLUME =1= APPLICATION
+ALERT_DELINQUENT_VOLUME -N- PATRON
+ALERT_DELINQUENT_VOLUME -N- VOLUME
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0007.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0008,Staff should be able to add new books and remove damaged ones.,Librarians should be able to register new volumes and discard damaged ones.,"@startchen
+entity LIBRARIAN {
+  LibrarianId <<key>>
+}
+
+entity VOLUME {
+  VolumeId <<key>>
+  Condition
+}
+
+relationship REGISTER_NEW_VOLUME {
+}
+
+relationship DISCARD_DAMAGED_VOLUME {
+}
+
+REGISTER_NEW_VOLUME =1= LIBRARIAN
+REGISTER_NEW_VOLUME -N- VOLUME
+
+DISCARD_DAMAGED_VOLUME =1= LIBRARIAN
+DISCARD_DAMAGED_VOLUME -N- VOLUME
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0008.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0009,The system shall generate discharge summaries for patients. This feature will improve user experience.,The application shall generate discharge reports for clients. This capability will improve user experience.,"@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity DISCHARGE_REPORT {
+  DischargeReportId <<key>>
+}
+
+entity CLIENT {
+  ClientId <<key>>
+}
+
+relationship GENERATE_DISCHARGE_REPORT {
+}
+
+GENERATE_DISCHARGE_REPORT =1= APPLICATION
+GENERATE_DISCHARGE_REPORT -N- DISCHARGE_REPORT
+GENERATE_DISCHARGE_REPORT -N- CLIENT
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0009.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0010,The system should store customer shipping and billing information securely.,The platform should store client delivery and invoicing information securely.,"@startchen
+entity PLATFORM {
+  PlatformId <<key>>
+}
+
+entity CLIENT {
+  ClientId <<key>>
+}
+
+entity DELIVERY_INFORMATION {
+  DeliveryInformationId <<key>>
+}
+
+entity INVOICING_INFORMATION {
+  InvoicingInformationId <<key>>
+}
+
+relationship STORE {
+}
+
+STORE =1= PLATFORM
+STORE -N- CLIENT
+STORE -N- DELIVERY_INFORMATION
+STORE -N- INVOICING_INFORMATION
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0010.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0011,The system should record the due date of each borrowed book.,The application should record the return deadline of each loaned volume.,"@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity VOLUME {
+  VolumeId <<key>>
+}
+
+entity RETURN_DEADLINE {
+  ReturnDeadlineId <<key>>
+}
+
+relationship RECORD_RETURN_DEADLINE {
+}
+
+RECORD_RETURN_DEADLINE =1= APPLICATION
+RECORD_RETURN_DEADLINE -N- VOLUME
+RECORD_RETURN_DEADLINE -N- RETURN_DEADLINE
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0011.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0012,"In the banking module, users shall be able to transfer money to other accounts securely.","In the banking component, customers shall be able to transfer funds to other accounts securely.","@startchen
+entity CUSTOMER {
+  CustomerId <<key>>
+}
+
+entity FUND {
+  FundId <<key>>
+}
+
+entity ACCOUNT {
+  AccountId <<key>>
+}
+
+relationship TRANSFER_FUNDS_SECURELY {
+}
+
+TRANSFER_FUNDS_SECURELY =1= CUSTOMER
+TRANSFER_FUNDS_SECURELY -N- FUND
+TRANSFER_FUNDS_SECURELY -N- ACCOUNT
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0012.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0013,The system must record the due date of each borrowed book.,The application must record the return deadline of each loaned volume.,"@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity VOLUME {
+  VolumeId <<key>>
+}
+
+entity RETURN_DEADLINE {
+  ReturnDeadlineId <<key>>
+}
+
+relationship RECORD_RETURN_DEADLINE {
+}
+
+RECORD_RETURN_DEADLINE =1= APPLICATION
+RECORD_RETURN_DEADLINE -N- VOLUME
+RECORD_RETURN_DEADLINE -N- RETURN_DEADLINE
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0013.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0014,The pharmacy module should track available medicines and their expiry dates.,The pharmacy component should track available pharmaceuticals and their expiration dates.,"@startchen
+entity PHARMACY_COMPONENT {
+  PharmacyComponentId <<key>>
+}
+
+entity PHARMACEUTICAL {
+  PharmaceuticalId <<key>>
+  ExpirationDate
+}
+
+relationship TRACK_AVAILABLE_PHARMACEUTICALS {
+}
+
+TRACK_AVAILABLE_PHARMACEUTICALS =1= PHARMACY_COMPONENT
+TRACK_AVAILABLE_PHARMACEUTICALS -N- PHARMACEUTICAL
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0014.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0015,The system shall generate report cards for each semester. This feature will improve user experience.,The platform shall generate academic transcripts for each term. This capability will improve user experience.,"@startchen
+entity PLATFORM {
+  PlatformId <<key>>
+}
+
+entity ACADEMIC_TRANSCRIPT {
+  AcademicTranscriptId <<key>>
+}
+
+entity TERM {
+  TermId <<key>>
+}
+
+relationship GENERATE_ACADEMIC_TRANSCRIPTS {
+}
+
+GENERATE_ACADEMIC_TRANSCRIPTS =1= PLATFORM
+GENERATE_ACADEMIC_TRANSCRIPTS -N- ACADEMIC_TRANSCRIPT
+GENERATE_ACADEMIC_TRANSCRIPTS -1- TERM
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0015.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0016,The application must record the due date of each borrowed book.,The system must record the return deadline of each loaned volume.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity VOLUME {
+  VolumeId <<key>>
+}
+
+entity LOAN {
+  LoanId <<key>>
+  ReturnDeadline
+}
+
+relationship RECORD_RETURN_DEADLINE {
+}
+
+RECORD_RETURN_DEADLINE =1= SYSTEM
+RECORD_RETURN_DEADLINE -N- LOAN
+RECORD_RETURN_DEADLINE -N- VOLUME
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0016.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0017,Users should be able to add items to a shopping cart and proceed to checkout.,Customers should be able to insert products into a shopping basket and proceed to payment.,"@startchen
+entity CUSTOMER {
+  CustomerId <<key>>
+}
+
+entity PRODUCT {
+  ProductId <<key>>
+}
+
+entity SHOPPING_BASKET {
+  ShoppingBasketId <<key>>
+}
+
+entity PAYMENT {
+  PaymentId <<key>>
+}
+
+relationship INSERT_PRODUCTS_INTO_SHOPPING_BASKET {
+}
+
+relationship PROCEED_TO_PAYMENT {
+}
+
+INSERT_PRODUCTS_INTO_SHOPPING_BASKET =1= CUSTOMER
+INSERT_PRODUCTS_INTO_SHOPPING_BASKET -N- PRODUCT
+INSERT_PRODUCTS_INTO_SHOPPING_BASKET -1- SHOPPING_BASKET
+
+PROCEED_TO_PAYMENT =1= CUSTOMER
+PROCEED_TO_PAYMENT -1- SHOPPING_BASKET
+PROCEED_TO_PAYMENT -1- PAYMENT
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0017.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0018,The system should notify users of any large withdrawals or deposits.,The platform should alert account holders of any large withdrawals or deposits.,"@startchen
+entity PLATFORM {
+  PlatformId <<key>>
+}
+
+entity ACCOUNT_HOLDER {
+  AccountHolderId <<key>>
+}
+
+entity WITHDRAWAL {
+  WithdrawalId <<key>>
+  Amount
+}
+
+entity DEPOSIT {
+  DepositId <<key>>
+  Amount
+}
+
+relationship ALERT_LARGE_WITHDRAWAL {
+}
+
+relationship ALERT_LARGE_DEPOSIT {
+}
+
+ALERT_LARGE_WITHDRAWAL =1= PLATFORM
+ALERT_LARGE_WITHDRAWAL -N- ACCOUNT_HOLDER
+ALERT_LARGE_WITHDRAWAL -N- WITHDRAWAL
+
+ALERT_LARGE_DEPOSIT =1= PLATFORM
+ALERT_LARGE_DEPOSIT -N- ACCOUNT_HOLDER
+ALERT_LARGE_DEPOSIT -N- DEPOSIT
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0018.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0019,The application must track all books and their borrowers.,The application must track all publications and their patrons.,"@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity PUBLICATION {
+  PublicationId <<key>>
+}
+
+entity PATRON {
+  PatronId <<key>>
+}
+
+relationship TRACK {
+}
+
+TRACK =1= APPLICATION
+TRACK -N- PUBLICATION
+TRACK -N- PATRON
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0019.png,dataset_B_SYNONYM,MISMATCH
+dataset_B_SYNONYM_0020,"Users shall be able to search for books by title, author, or ISBN.","Users shall be able to search for publications by title, writer, or ISBN.","@startchen
+entity USER {
+  UserId <<key>>
+}
+
+entity PUBLICATION {
+  PublicationId <<key>>
+  Title
+  Writer
+  ISBN
+}
+
+relationship SEARCH_FOR_PUBLICATION {
+}
+
+SEARCH_FOR_PUBLICATION =1= USER
+SEARCH_FOR_PUBLICATION -N- PUBLICATION
+@endchen",MATCH,synonym,data/images/dataset_B_SYNONYM/dataset_B_SYNONYM_0020.png,dataset_B_SYNONYM,MATCH

@@ -1,0 +1,444 @@
+ID,Requirement,PlantUML,Label,Error_Type,Image_Path,Dataset,Prediction
+dataset_A_PERFECT_0001,"In the banking module, the system shall generate monthly account statements.","@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity BANKING_MODULE {
+  BankingModuleId <<key>>
+}
+
+entity ACCOUNT_STATEMENT {
+  AccountStatementId <<key>>
+}
+
+relationship GENERATE {
+}
+
+GENERATE =1= SYSTEM
+GENERATE -1- BANKING_MODULE
+GENERATE -N- ACCOUNT_STATEMENT
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0001.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0002,The system shall allow users to view their account balance and transaction history.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity USER {
+  UserId <<key>>
+}
+
+entity ACCOUNT {
+  AccountId <<key>>
+  Balance
+}
+
+entity TRANSACTION_HISTORY {
+  TransactionHistoryId <<key>>
+}
+
+relationship ALLOW_VIEW_ACCOUNT_BALANCE {
+}
+
+relationship ALLOW_VIEW_TRANSACTION_HISTORY {
+}
+
+ALLOW_VIEW_ACCOUNT_BALANCE =1= SYSTEM
+ALLOW_VIEW_ACCOUNT_BALANCE -N- USER
+ALLOW_VIEW_ACCOUNT_BALANCE -N- ACCOUNT
+
+ALLOW_VIEW_TRANSACTION_HISTORY =1= SYSTEM
+ALLOW_VIEW_TRANSACTION_HISTORY -N- USER
+ALLOW_VIEW_TRANSACTION_HISTORY -N- TRANSACTION_HISTORY
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0002.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0003,"In the e-commerce module, the system shall generate an order confirmation email after each purchase.","@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity ORDER_CONFIRMATION_EMAIL {
+  OrderConfirmationEmailId <<key>>
+}
+
+entity PURCHASE {
+  PurchaseId <<key>>
+}
+
+relationship GENERATE_ORDER_CONFIRMATION_EMAIL {
+}
+
+GENERATE_ORDER_CONFIRMATION_EMAIL =1= SYSTEM
+GENERATE_ORDER_CONFIRMATION_EMAIL -N- ORDER_CONFIRMATION_EMAIL
+GENERATE_ORDER_CONFIRMATION_EMAIL -N- PURCHASE
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0003.png,dataset_A_PERFECT,MISMATCH
+dataset_A_PERFECT_0004,"In the hospital module, the system shall generate discharge summaries for patients.","@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity PATIENT {
+  PatientId <<key>>
+}
+
+entity DISCHARGE_SUMMARY {
+  DischargeSummaryId <<key>>
+}
+
+relationship GENERATE_DISCHARGE_SUMMARIES {
+}
+
+GENERATE_DISCHARGE_SUMMARIES =1= SYSTEM
+GENERATE_DISCHARGE_SUMMARIES -N- DISCHARGE_SUMMARY
+GENERATE_DISCHARGE_SUMMARIES -N- PATIENT
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0004.png,dataset_A_PERFECT,MISMATCH
+dataset_A_PERFECT_0005,Doctors must be able to view and update patient prescriptions.,"@startchen
+entity DOCTOR {
+  DoctorId <<key>>
+}
+
+entity PATIENT {
+  PatientId <<key>>
+}
+
+entity PRESCRIPTION {
+  PrescriptionId <<key>>
+}
+
+relationship VIEW_PRESCRIPTION {
+}
+
+relationship UPDATE_PRESCRIPTION {
+}
+
+VIEW_PRESCRIPTION =1= DOCTOR
+VIEW_PRESCRIPTION -N- PRESCRIPTION
+VIEW_PRESCRIPTION -N- PATIENT
+
+UPDATE_PRESCRIPTION =1= DOCTOR
+UPDATE_PRESCRIPTION -N- PRESCRIPTION
+UPDATE_PRESCRIPTION -N- PATIENT
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0005.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0006,Teachers must be able to assign homework and upload study materials.,"@startchen
+entity TEACHER {
+  TeacherId <<key>>
+}
+
+entity HOMEWORK {
+  HomeworkId <<key>>
+}
+
+entity STUDY_MATERIAL {
+  StudyMaterialId <<key>>
+}
+
+relationship ASSIGN_HOMEWORK {
+}
+
+relationship UPLOAD_STUDY_MATERIALS {
+}
+
+ASSIGN_HOMEWORK =1= TEACHER
+ASSIGN_HOMEWORK -N- HOMEWORK
+
+UPLOAD_STUDY_MATERIALS =1= TEACHER
+UPLOAD_STUDY_MATERIALS -N- STUDY_MATERIAL
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0006.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0007,The system should notify users of overdue books.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity USER {
+  UserId <<key>>
+}
+
+entity BOOK {
+  BookId <<key>>
+}
+
+relationship NOTIFY_OF_OVERDUE_BOOKS {
+}
+
+NOTIFY_OF_OVERDUE_BOOKS =1= SYSTEM
+NOTIFY_OF_OVERDUE_BOOKS -N- USER
+NOTIFY_OF_OVERDUE_BOOKS -N- BOOK
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0007.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0008,Staff should be able to add new books and remove damaged ones.,"@startchen
+entity STAFF {
+  StaffId <<key>>
+}
+
+entity BOOK {
+  BookId <<key>>
+  Condition
+}
+
+relationship ADD_NEW_BOOK {
+}
+
+relationship REMOVE_DAMAGED_BOOK {
+}
+
+ADD_NEW_BOOK =1= STAFF
+ADD_NEW_BOOK -N- BOOK
+
+REMOVE_DAMAGED_BOOK =1= STAFF
+REMOVE_DAMAGED_BOOK -N- BOOK
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0008.png,dataset_A_PERFECT,MISMATCH
+dataset_A_PERFECT_0009,The system shall generate discharge summaries for patients. This feature will improve user experience.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity DISCHARGE_SUMMARY {
+  DischargeSummaryId <<key>>
+}
+
+entity PATIENT {
+  PatientId <<key>>
+}
+
+relationship GENERATE_DISCHARGE_SUMMARY {
+}
+
+GENERATE_DISCHARGE_SUMMARY =1= SYSTEM
+GENERATE_DISCHARGE_SUMMARY -N- DISCHARGE_SUMMARY
+GENERATE_DISCHARGE_SUMMARY -N- PATIENT
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0009.png,dataset_A_PERFECT,MISMATCH
+dataset_A_PERFECT_0010,The system should store customer shipping and billing information securely.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity CUSTOMER {
+  CustomerId <<key>>
+}
+
+entity SHIPPING_INFORMATION {
+  ShippingInformationId <<key>>
+}
+
+entity BILLING_INFORMATION {
+  BillingInformationId <<key>>
+}
+
+relationship STORE {
+}
+
+STORE =1= SYSTEM
+STORE -N- CUSTOMER
+STORE -N- SHIPPING_INFORMATION
+STORE -N- BILLING_INFORMATION
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0010.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0011,The system should record the due date of each borrowed book.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity BOOK {
+  BookId <<key>>
+  DueDate
+}
+
+relationship RECORD_DUE_DATE {
+}
+
+RECORD_DUE_DATE =1= SYSTEM
+RECORD_DUE_DATE -N- BOOK
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0011.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0012,"In the banking module, users shall be able to transfer money to other accounts securely.","@startchen
+entity USER {
+  UserId <<key>>
+}
+
+entity MONEY {
+  MoneyId <<key>>
+}
+
+entity ACCOUNT {
+  AccountId <<key>>
+}
+
+relationship TRANSFER_MONEY_SECURELY {
+}
+
+TRANSFER_MONEY_SECURELY =1= USER
+TRANSFER_MONEY_SECURELY -1- MONEY
+TRANSFER_MONEY_SECURELY -N- ACCOUNT
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0012.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0013,The system must record the due date of each borrowed book.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity BOOK {
+  BookId <<key>>
+  DueDate
+}
+
+relationship RECORD_DUE_DATE {
+}
+
+RECORD_DUE_DATE =1= SYSTEM
+RECORD_DUE_DATE -N- BOOK
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0013.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0014,The pharmacy module should track available medicines and their expiry dates.,"@startchen
+entity PHARMACY_MODULE {
+  PharmacyModuleId <<key>>
+}
+
+entity MEDICINE {
+  MedicineId <<key>>
+  ExpiryDate
+}
+
+relationship TRACK_AVAILABLE_MEDICINES {
+}
+
+TRACK_AVAILABLE_MEDICINES =1= PHARMACY_MODULE
+TRACK_AVAILABLE_MEDICINES -N- MEDICINE
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0014.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0015,The system shall generate report cards for each semester. This feature will improve user experience.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity REPORT_CARD {
+  ReportCardId <<key>>
+}
+
+entity SEMESTER {
+  SemesterId <<key>>
+}
+
+relationship GENERATE_REPORT_CARDS {
+}
+
+GENERATE_REPORT_CARDS =1= SYSTEM
+GENERATE_REPORT_CARDS -N- REPORT_CARD
+GENERATE_REPORT_CARDS -1- SEMESTER
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0015.png,dataset_A_PERFECT,MISMATCH
+dataset_A_PERFECT_0016,The application must record the due date of each borrowed book.,"@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity BOOK {
+  BookId <<key>>
+  DueDate
+}
+
+relationship RECORD_DUE_DATE {
+}
+
+RECORD_DUE_DATE =1= APPLICATION
+RECORD_DUE_DATE -N- BOOK
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0016.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0017,Users should be able to add items to a shopping cart and proceed to checkout.,"@startchen
+entity USER {
+  UserId <<key>>
+}
+
+entity ITEM {
+  ItemId <<key>>
+}
+
+entity SHOPPING_CART {
+  ShoppingCartId <<key>>
+}
+
+entity CHECKOUT {
+  CheckoutId <<key>>
+}
+
+relationship ADD_ITEM_TO_SHOPPING_CART {
+}
+
+relationship PROCEED_TO_CHECKOUT {
+}
+
+ADD_ITEM_TO_SHOPPING_CART =1= USER
+ADD_ITEM_TO_SHOPPING_CART -N- ITEM
+ADD_ITEM_TO_SHOPPING_CART -1- SHOPPING_CART
+
+PROCEED_TO_CHECKOUT =1= USER
+PROCEED_TO_CHECKOUT -1- SHOPPING_CART
+PROCEED_TO_CHECKOUT -1- CHECKOUT
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0017.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0018,The system should notify users of any large withdrawals or deposits.,"@startchen
+entity SYSTEM {
+  SystemId <<key>>
+}
+
+entity USER {
+  UserId <<key>>
+}
+
+entity WITHDRAWAL {
+  WithdrawalId <<key>>
+  Amount
+}
+
+entity DEPOSIT {
+  DepositId <<key>>
+  Amount
+}
+
+entity NOTIFICATION {
+  NotificationId <<key>>
+}
+
+relationship NOTIFY_LARGE_WITHDRAWAL {
+}
+
+relationship NOTIFY_LARGE_DEPOSIT {
+}
+
+NOTIFY_LARGE_WITHDRAWAL =1= SYSTEM
+NOTIFY_LARGE_WITHDRAWAL -N- USER
+NOTIFY_LARGE_WITHDRAWAL -N- WITHDRAWAL
+NOTIFY_LARGE_WITHDRAWAL -N- NOTIFICATION
+
+NOTIFY_LARGE_DEPOSIT =1= SYSTEM
+NOTIFY_LARGE_DEPOSIT -N- USER
+NOTIFY_LARGE_DEPOSIT -N- DEPOSIT
+NOTIFY_LARGE_DEPOSIT -N- NOTIFICATION
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0018.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0019,The application must track all books and their borrowers.,"@startchen
+entity APPLICATION {
+  ApplicationId <<key>>
+}
+
+entity BOOK {
+  BookId <<key>>
+}
+
+entity BORROWER {
+  BorrowerId <<key>>
+}
+
+relationship TRACK {
+}
+
+TRACK =1= APPLICATION
+TRACK -N- BOOK
+TRACK -N- BORROWER
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0019.png,dataset_A_PERFECT,MATCH
+dataset_A_PERFECT_0020,"Users shall be able to search for books by title, author, or ISBN.","@startchen
+entity USER {
+  UserId <<key>>
+}
+
+entity BOOK {
+  BookId <<key>>
+  Title
+  Author
+  ISBN
+}
+
+relationship SEARCH_FOR_BOOK {
+}
+
+SEARCH_FOR_BOOK =1= USER
+SEARCH_FOR_BOOK -N- BOOK
+@endchen",MATCH,none,data/images/dataset_A_PERFECT/dataset_A_PERFECT_0020.png,dataset_A_PERFECT,MATCH
